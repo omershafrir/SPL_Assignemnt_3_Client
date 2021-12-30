@@ -1,0 +1,8 @@
+//
+// Created by omershafrir on 30/12/2021.
+//
+
+#ifndef SPL_ASSIGNEMNT_3_CLIENT_CLIENT_H
+#define SPL_ASSIGNEMNT_3_CLIENT_CLIENT_H
+
+#endif //SPL_ASSIGNEMNT_3_CLIENT_CLIENT_H
