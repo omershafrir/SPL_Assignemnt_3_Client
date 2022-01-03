@@ -1,13 +1,18 @@
-all: bin/run
+LDFLAGS:=-lboost_system -pthread
 
-bin/run: bin/Client.o bin/clients.o
-	g++ bin/Client.o bin/clients.o -o bin/run
+all: run
+
+run: bin/Client.o bin/clients.o bin/EncoderDecoder.o
+	g++ bin/Client.o bin/clients.o bin/EncoderDecoder.o -o run $(LDFLAGS)
 
 bin/Client.o: src/Client.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Client.o src/Client.cpp
 
 bin/clients.o: src/clients.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/clients.o src/clients.cpp
+
+bin/EncoderDecoder.o: src/EncoderDecoder.cpp
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/EncoderDecoder.o src/EncoderDecoder.cpp
 
 	@echo success
 

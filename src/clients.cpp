@@ -9,5 +9,8 @@
 using namespace std;
 int main(int argc, char** argv) {
 EncoderDecoder encdec;
-bytes[] x = encdec.encode("REGISTER OMER 123 3.10");
+vector<char> x = encdec.encode("REGISTER OMER 123 3.10\n");
+for (char c: x){
+    cout<<c<<" , ";
+}
 }

@@ -1,20 +1,23 @@
 #ifndef SPL_ASSIGNEMNT_3_CLIENT_ENCODERDECODER_H
 #define SPL_ASSIGNEMNT_3_CLIENT_ENCODERDECODER_H
 #include <string>
+#include <vector>
 #include <iostream>
-#include <boost/asio.hpp>
 
+
+using namespace std;
 class EncoderDecoder{
 public:
-    char[] encode(string input);
+    EncoderDecoder();
+    vector<char> encode(string input);
     string decode(string input);
 
 private:
-    char[] encodeRegister(string input);
-    char[] mergeArrays(Vector<byte[]> vec);
-    char[] toArray(string input);
-    const char[13][1] opcodes;
-    const char zero;
+    vector<char> encodeRegister(string input);
+    vector<char> mergeVectors(vector<vector<char>> vec);
+    vector<char> toVector(string input);
+    char opcodes[13];
+//    vector<char> opcodesvec;
 
 
 
