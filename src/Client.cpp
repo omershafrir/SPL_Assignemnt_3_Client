@@ -4,6 +4,6 @@
 #include <iostream>
 
 using namespace std;
-Class Client{
+class Client{
 
 };
