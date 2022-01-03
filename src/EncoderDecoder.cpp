@@ -4,60 +4,53 @@
 #include <vector>
 
 EncoderDecoder::EncoderDecoder(){
-    for (int i =0 ; i < 13 ; i++){
-        this->opcodes[i]=(char)i;
-//        opcodesvec.push_back(i);
-        cout<<this->opcodes[i];    ///////////////////////////////////
-    }
-    cout<<"opcode?: "<<opcodes[3];    ///////////////////////////////////
+  opcode.push_back("\0");
+  opcode.push_back("1");
+  opcode.push_back("2");
+  opcode.push_back("3");
+  opcode.push_back("4");
+  opcode.push_back("5");
+  opcode.push_back("6");
+  opcode.push_back("7");
+  opcode.push_back("8");
+  opcode.push_back("9");
+  opcode.push_back("10");
+  opcode.push_back("11");
+  opcode.push_back("12");
 }
 
-vector<char> EncoderDecoder::encode(string input) {
+string EncoderDecoder::encode(string input) {
     using namespace std;
     if(input.substr(0 , 8) == "REGISTER"){
-        return encodeRegister(input);
+        return encodeRegister(input+";");
     }
 }
 
-vector<char> EncoderDecoder::encodeRegister(string input){
-
+string EncoderDecoder::encodeRegister(string input){
     int indexStart = 9;
     int curr = 9;
     while(input[curr] != ' '){
         curr++;
     }
-    string _username = input.substr(indexStart , curr - indexStart);
+    string username = input.substr(indexStart , curr - indexStart);
     indexStart = curr + 1;
     curr++;
     while(input[curr] != ' '){
         curr++;
     }
-    string _password = input.substr(indexStart , curr - indexStart);
+    string password = input.substr(indexStart , curr - indexStart);
     indexStart = curr + 1;
-//    curr++;
-    while(input[curr] =! '\n'){
+    curr++;
+    while(input[curr] != ';'){
         curr++;
     }
-    string _birthday = input.substr(indexStart , curr - indexStart);
+    string birthday = input.substr(indexStart , curr - indexStart-1);
+    string one = string(1,'1'); string zero = string(1,'0');
+    string nullzero = string(1,'\0'); string end = string(1,';');
+    string output = zero+one+username+nullzero+password+nullzero+birthday+nullzero;
 
-vector<char> username = toVector(_username);
-vector<char> password = toVector(_password);
-vector<char> birthday = toVector(_birthday);
-
-vector<vector<char>> vec;
-    cout<<input<<endl;//////////////////////////////
-    cout<<_username<<"-"<<_password<<"-"<<_birthday<<endl;   /////////////////////////////////
-
-//vec.push_back(opcodesvec.at(1)); vec.push_back(username);
-//vec.push_back(opcodesvec.at(0)); vec.push_back(password);
-//vec.push_back(opcodesvec.at(0)); vec.push_back(birthday); vec.push_back(opcodesvec.at(0));
-
-return mergeVectors(vec);
-
+return output;
 }
-
-
-
 
 vector<char> EncoderDecoder::mergeVectors(vector<vector<char>> vec){
         int size = 0;

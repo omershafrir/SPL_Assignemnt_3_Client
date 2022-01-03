@@ -9,15 +9,14 @@ using namespace std;
 class EncoderDecoder{
 public:
     EncoderDecoder();
-    vector<char> encode(string input);
+    string encode(string input);
     string decode(string input);
 
 private:
-    vector<char> encodeRegister(string input);
+    string encodeRegister(string input);
     vector<char> mergeVectors(vector<vector<char>> vec);
     vector<char> toVector(string input);
-    char opcodes[13];
-//    vector<char> opcodesvec;
+    vector<string> opcode;
 
 
 
